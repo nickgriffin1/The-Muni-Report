@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
 import { addLinePositions, removeLinePositions, selectLine, removeSelectedLine } from '../actions'
+import exitIcon from '../assets/x.svg'
 
 const InfoPanelContainer = styled.div`
   position: fixed;
   top: 50px;
   left:20px;
-  height: 50%;
+  max-height: 50%;
   width: 300px;
   background-color: white;
   z-index: 1000;
@@ -15,12 +16,30 @@ const InfoPanelContainer = styled.div`
   overflow: hidden;
   overflow-y: auto;
 `
+const Header = styled.div`
+  position: fixed;
+  background-color: white;
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid darkgrey;
+`
 const Title = styled.div`
   font-size: 22px;
   margin-top: 10px;
   margin-bottom: 5px;
-  text-align: center;
-  border-bottom: 1px solid darkgrey;
+  margin-left: 5px;
+`
+const Toggle = styled.div`
+  align-self: center;
+`
+const ExitIcon = styled.img`
+  height: 20px;
+  margin-right: 10px;
+`
+const OpenIcon = ExitIcon.extend`
+  transform: rotate(45deg);
 `
 const LineContainer = styled.div`
   margin-top: 15px;
@@ -40,7 +59,8 @@ const LineTitle = styled.div`
 `
 class InfoPanel extends Component {
   state = {
-    checked: []
+    checked: [],
+    showLines: true
   }
   toggleBox = (line) => {
     if (this.state.checked.includes(line)) {
@@ -61,19 +81,42 @@ class InfoPanel extends Component {
       this.props.selectLine(line)
     }
   }
+  getVisibility = () => {
+    if (this.state.showLines === true) {
+      return 'flex'
+    } else {
+      return 'none'
+    }
+  }
+  toggleLines = () => {
+    this.setState(prevState => ({
+      showLines: !prevState.showLines
+    }))
+  }
   render() {
     return (
       <InfoPanelContainer>
-        <Title>Select Muni Lines</Title>
-        {this.props.allLines.map(line => (
-          <LineContainer key={line.tag}>
-            <CheckBox
-              type='checkbox'
-              onChange={() => this.toggleBox(line.tag)}
-            />
-            <LineTitle>{line.title}</LineTitle>
-          </LineContainer>
-        ))}
+        <Header>
+          <Title>
+            Select Muni Lines
+          </Title>
+          <Toggle onClick={this.toggleLines}>{
+            this.state.showLines ?
+              <ExitIcon src={exitIcon} /> :
+              <OpenIcon src={exitIcon} />
+          }</Toggle>
+        </Header>
+        <div style={{ marginTop: '50px'}}>
+          {this.props.allLines.map(line => (
+            <LineContainer style={{ display: this.getVisibility() }} key={line.tag}>
+              <CheckBox
+                type='checkbox'
+                onChange={() => this.toggleBox(line.tag)}
+              />
+              <LineTitle>{line.title}</LineTitle>
+            </LineContainer>
+          ))}
+        </div>
       </InfoPanelContainer>
     )
   }
