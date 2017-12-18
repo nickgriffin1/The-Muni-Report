@@ -12,5 +12,5 @@
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff",
-  "permissions": [ "http://webservices.nextbus.com", "https://csi.gstatic.com", "https://nickgriffin1.github.io/the-muni-report/" ]
+  "permissions": [ "http://webservices.nextbus.com", "https://csi.gstatic.com" ]
 }
