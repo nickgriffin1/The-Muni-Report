@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import styled from 'styled-components'
 import InfoPanel from './InfoPanel'
 import SFMap from './SFMap'
+import Timer from './Timer'
 // not in the repo, getcha own api key
 import { apiKey } from '../assets/key'
 
@@ -11,7 +12,6 @@ const Container = styled.div`
   min-width: 100vw;
   min-height: 100%;
 `
-
 class MainView extends Component {
   render() {
     return (
@@ -25,6 +25,7 @@ class MainView extends Component {
           positions={this.props.positions}
         />
         <InfoPanel />
+        <Timer />
       </Container>
     )
   }
