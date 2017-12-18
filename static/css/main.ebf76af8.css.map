@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,EACE,sBAAwB,CAG1B,KACE,SACA,SAAW,CAGb,0BACE,cAAgB","file":"static/css/main.ebf76af8.css","sourcesContent":["* {\n  font-family: sans-serif;\n}\n\nbody {\n  margin: 0;\n  padding: 0;\n}\n\n.CircularProgressbar-path {\n  stroke: #F44336;\n}\n\n\n\n// WEBPACK FOOTER //\n// ./src/index.css"],"sourceRoot":""}
