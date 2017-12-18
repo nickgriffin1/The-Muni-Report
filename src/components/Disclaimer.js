@@ -11,7 +11,7 @@ const DisclaimerContainer = styled.div`
 const Disclaimer = () => {
   return (
     <DisclaimerContainer>
-      This project is in no way related to or endorsed by the SFMTA, Google or NextBus
+      Disclaimer: This project is in no way related to or endorsed by the SFMTA, Google or NextBus
     </DisclaimerContainer>
   )
 }
