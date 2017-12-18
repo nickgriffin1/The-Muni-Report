@@ -64,7 +64,7 @@ class InfoPanel extends Component {
   render() {
     return (
       <InfoPanelContainer>
-        <Title>Show Vehicle Positions</Title>
+        <Title>Select Muni Lines</Title>
         {this.props.allLines.map(line => (
           <LineContainer key={line.tag}>
             <CheckBox

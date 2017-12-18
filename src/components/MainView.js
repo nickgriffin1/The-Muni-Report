@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import InfoPanel from './InfoPanel'
 import SFMap from './SFMap'
 import Timer from './Timer'
+import Disclaimer from './Disclaimer'
 // not in the repo, getcha own api key
 import { apiKey } from '../assets/key'
 
@@ -26,6 +27,7 @@ class MainView extends Component {
         />
         <InfoPanel />
         <Timer />
+        <Disclaimer />
       </Container>
     )
   }
