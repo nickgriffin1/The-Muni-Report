@@ -59,24 +59,15 @@ const LineTitle = styled.div`
 `
 class InfoPanel extends Component {
   state = {
-    checked: [],
     showLines: true
   }
   toggleBox = (line) => {
-    if (this.state.checked.includes(line)) {
+    if (this.props.allLines.includes(line)) {
       // handle uncheck
-      this.setState(prevState => ({
-        checked: prevState.checked.filter(item => item !== line)
-      }))
-      // remove line from redux store
       this.props.removeLinePositions(line)
       this.props.removeSelectedLine(line)
     } else {
       // handle check
-      this.setState(prevState => ({
-        checked: [ ...prevState.checked, line ]
-      }))
-      // add line to redux store
       this.props.addLinePositions(line)
       this.props.selectLine(line)
     }
