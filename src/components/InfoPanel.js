@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
-import { addLinePositions, removeLinePositions } from '../actions'
+import { addLinePositions, removeLinePositions, selectLine, removeSelectedLine } from '../actions'
 
 const InfoPanelContainer = styled.div`
   position: fixed;
@@ -17,8 +17,10 @@ const InfoPanelContainer = styled.div`
 `
 const Title = styled.div`
   font-size: 22px;
-  margin-top: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   text-align: center;
+  border-bottom: 1px solid darkgrey;
 `
 const LineContainer = styled.div`
   margin-top: 15px;
@@ -31,10 +33,6 @@ const LineTitle = styled.div`
   font-size: 16px;
   margin-left: 20px;
 `
-const Divider = styled.hr`
-  border-bottom: 1px solid black;
-`
-// Would be used to display and toggle lines and information
 class InfoPanel extends Component {
   state = {
     checked: []
@@ -47,6 +45,7 @@ class InfoPanel extends Component {
       }))
       // remove line from redux store
       this.props.removeLinePositions(line)
+      this.props.removeSelectedLine(line)
     } else {
       // handle check
       this.setState(prevState => ({
@@ -54,18 +53,20 @@ class InfoPanel extends Component {
       }))
       // add line to redux store
       this.props.addLinePositions(line)
+      this.props.selectLine(line)
     }
   }
   render() {
-    console.log(this.state)
     return (
       <InfoPanelContainer>
         <Title>Show Vehicle Positions</Title>
-        {this.props.lines.map(line => (
+        {this.props.allLines.map(line => (
           <LineContainer key={line.tag}>
-            <input type='checkbox' onChange={() => this.toggleBox(line.tag)}/>
+            <input
+              type='checkbox'
+              onChange={() => this.toggleBox(line.tag)}
+            />
             <LineTitle>{line.title}</LineTitle>
-            <Divider />
           </LineContainer>
         ))}
       </InfoPanelContainer>
@@ -73,14 +74,16 @@ class InfoPanel extends Component {
   }
 }
 
-function mapStateToProps({ lines }) {
-  return { lines }
+function mapStateToProps({ allLines, selectedLines }) {
+  return { allLines, selectedLines }
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     addLinePositions: data => dispatch(addLinePositions(data)),
-    removeLinePositions: data => dispatch(removeLinePositions(data))
+    removeLinePositions: data => dispatch(removeLinePositions(data)),
+    selectLine: data => dispatch(selectLine(data)),
+    removeSelectedLine: data => dispatch(removeSelectedLine(data))
   }
 }
 

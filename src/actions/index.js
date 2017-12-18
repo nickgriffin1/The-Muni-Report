@@ -3,7 +3,6 @@ import { getAllMuniLines, getLineLocations } from '../utils/api'
 export function fetchLines() {
   return dispatch => {
     return getAllMuniLines().then(lines => {
-      console.log('lines', lines)
       dispatch(receiveLines(lines))
     })
   }
@@ -19,7 +18,6 @@ function receiveLines(lines) {
 export function addLinePositions(line) {
   return dispatch => {
     return getLineLocations(line).then(positions => {
-      console.log('positions', positions)
       dispatch(receiveLinePositions(line, positions))
     })
   }
@@ -36,6 +34,19 @@ export function receiveLinePositions(line, positions) {
 export function removeLinePositions(line) {
   return {
     type: 'REMOVE_LINE_POSITIONS',
+    line
+  }
+}
+
+export function selectLine(line) {
+  return {
+    type: 'SELECT_LINE',
+    line
+  }
+}
+export function removeSelectedLine(line) {
+  return {
+    type: 'REMOVE_SELECTED_LINE',
     line
   }
 }

@@ -1,4 +1,4 @@
-export default function lines(state = [], action) {
+export default function allLines(state = [], action) {
     switch (action.type) {
       case 'RECEIVE_LINES':
         return action.lines

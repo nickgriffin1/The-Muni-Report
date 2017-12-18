@@ -3,17 +3,23 @@ import { GoogleMap, withScriptjs, withGoogleMap, Marker } from 'react-google-map
 
 class SFMap extends Component {
   render() {
+    const { positions } = this.props
     return (
       <GoogleMap
         defaultZoom={13}
         defaultCenter={{ lat: 37.773972, lng: -122.431297 }}
       >
-        {this.state !== null && this.state.n.map(point => (
-          <Marker key={point.id} position={{ lat: parseFloat(point.lat), lng: parseFloat(point.lon) }} />
+        {positions.length > 0 && positions.map(position => (
+          <Marker
+            key={position.id + '-' + position.routeTag}
+            position={{
+              lat: parseFloat(position.lat),
+              lng: parseFloat(position.lon)
+            }}
+          />
         ))}
       </GoogleMap>
     )
   }
 }
-
 export default withScriptjs(withGoogleMap(SFMap))

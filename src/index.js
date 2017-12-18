@@ -35,8 +35,16 @@ const store = createStore(
 
 // get all lines from API
 store.dispatch(fetchLines())
+// update the lines once every 15 seconds
+/*setInterval(() => {
+  const lines = store.getState().lines
+  lines.forEach(line => {
+    store.dispatch(addLinePositions(line.tag))
+  })
+}, 15000)*/
 
-// render application 
+
+// render application
 ReactDOM.render(
   <Provider store={store}>
     <App />
