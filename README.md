@@ -22,6 +22,7 @@ Required: Node.js
 1. Ability to force refresh data
 2. Line selection panel UI refresh
 3. Icon refresh with more information and better UI
+4. Hosting and a domain name (themunireport.com)
 
 ## License
 
