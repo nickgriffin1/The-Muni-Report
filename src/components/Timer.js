@@ -4,8 +4,8 @@ import CircularProgressbar from 'react-circular-progressbar'
 
 const TimerContainer = styled.div`
   position: absolute;
-  top: 50px;
-  right: 50px;
+  bottom: 50px;
+  left: 50px;
   height: 50px;
   width: 50px;
   z-index: 10000;

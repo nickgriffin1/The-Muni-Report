@@ -1,6 +1,6 @@
 # The Muni Report
 
-A San Francisco Muni tracking application. You can track SF Muni Lines, metro and bus, in near real time. This application uses nextbus.com's APIs and thusly does not require a backend. You first select the lines you want to see and then their positions will be refreshed automatically once every 15 seconds. The red circle tells you how long until the next refresh.
+A San Francisco Muni tracking application. You can track SF Muni Metro and bus lines in near real time. This application uses nextbus.com's APIs and thusly does not require a backend. You first select the lines you want to see and then their positions will be refreshed automatically once every 15 seconds. The red circle tells you how long until the next refresh.
 
 ## Installation
 
@@ -22,7 +22,9 @@ Required: Node.js
 1. Ability to force refresh data
 2. Line selection panel UI refresh
 3. Icon refresh with more information and better UI
-4. Hosting and a domain name (themunireport.com)
+4. Ability to search lines
+5. Ability to select all metro or bus lines
+6. Fix bug where the timer gets out of sync with the updates
 
 ## License
 

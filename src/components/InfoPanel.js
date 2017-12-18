@@ -18,7 +18,7 @@ const InfoPanelContainer = styled.div`
 `
 const Header = styled.div`
   position: fixed;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.94);
   width: 300px;
   display: flex;
   flex-direction: row;
