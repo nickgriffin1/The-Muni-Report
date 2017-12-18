@@ -23,6 +23,19 @@ export function addLinePositions(line) {
   }
 }
 
+export function updateLinePositions(lines) {
+  return dispatch => {
+    lines.map(line => {
+      return getLineLocations(line).then(positions => {
+        // delete previous entries
+        dispatch(removeLinePositions(line))
+        // add new entries
+        dispatch(receiveLinePositions(line, positions))
+      })
+    })
+  }
+}
+
 export function receiveLinePositions(line, positions) {
   return {
     type: 'ADD_LINE_POSITIONS',

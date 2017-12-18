@@ -28,6 +28,11 @@ const LineContainer = styled.div`
   margin-left: 20px;
   display: flex;
   flex-direction: row;
+  align-items: center;
+`
+const CheckBox = styled.input`
+  margin: 0;
+  zoom: 2;
 `
 const LineTitle = styled.div`
   font-size: 16px;
@@ -62,7 +67,7 @@ class InfoPanel extends Component {
         <Title>Show Vehicle Positions</Title>
         {this.props.allLines.map(line => (
           <LineContainer key={line.tag}>
-            <input
+            <CheckBox
               type='checkbox'
               onChange={() => this.toggleBox(line.tag)}
             />

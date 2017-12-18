@@ -12,6 +12,11 @@ class SFMap extends Component {
         {positions.length > 0 && positions.map(position => (
           <Marker
             key={position.id + '-' + position.routeTag}
+            clickable={true}
+            label={{
+              fontSize: '16px',
+              text: position.routeTag || 'UNK'
+            }}
             position={{
               lat: parseFloat(position.lat),
               lng: parseFloat(position.lon)

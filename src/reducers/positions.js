@@ -4,20 +4,18 @@ export default function positions(state = [], action) {
       case 'ADD_LINE_POSITIONS':
         if (action.positions != null && action.positions.length > 0) {
           return [
-            ...state.filter(item => item.routeTag !== action.line),
-            ...action.positions
+            ...state,
+            // only add items with a route tag, for reason a lot don't and I'm considering it bad data
+            ...action.positions.filter(position => position.routeTag)
           ]
         } else if (action.positions != null && action.positions.length === 0) {
           // the API will return a object when there is only one entry
           // making it so that all entries are of type array
           return [
-            ...state.filter(item => item.routeTag !== action.line),
-            ...action.positions
+            ...state,
+            action.positions.filter(position => position.routeTag)
           ]
-        } else {
-          // only add data if positions are defined and return state minus line without data
-          return state.filter(item => item.line !== action.line)
-        }
+        } else { return state }
       case 'REMOVE_LINE_POSITIONS':
         return state.filter(item => item.routeTag !== action.line)
       default:

@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import reducers from './reducers'
-import { fetchLines } from './actions'
+import { fetchLines, updateLinePositions } from './actions'
 
 // logs all actions
 const logger = store => next => action => {
@@ -36,12 +36,10 @@ const store = createStore(
 // get all lines from API
 store.dispatch(fetchLines())
 // update the lines once every 15 seconds
-/*setInterval(() => {
-  const lines = store.getState().lines
-  lines.forEach(line => {
-    store.dispatch(addLinePositions(line.tag))
-  })
-}, 15000)*/
+setInterval(() => {
+  const lines = store.getState().selectedLines
+  store.dispatch(updateLinePositions(lines))
+}, 15000)
 
 
 // render application
