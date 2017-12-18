@@ -1,6 +1,6 @@
 # The Muni Report
 
-A San Francisco Muni tracking application. You can track SF Muni Lines, metro and bus, in near real time with this application.
+A San Francisco Muni tracking application. You can track SF Muni Lines, metro and bus, in near real time. This application uses nextbus.com's APIs and thusly does not require a backend.
 
 ## Installation
 
